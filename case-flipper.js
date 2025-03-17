@@ -16,9 +16,7 @@ const letterTransform = (word) => {
 
     if (char.charCodeAt() >= 97 && char.charCodeAt() <= 122) {
       transformedWord += String.fromCharCode(char.charCodeAt() - 32);
-    }
-
-    else if (char === " "){
+    } else if (char === " ") {
       transformedWord += char;
     }
   }
