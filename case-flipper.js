@@ -1,5 +1,5 @@
-const inputFile = await Deno.open("input.txt", { read: true });
-const outputFile = await Deno.open("output.txt", { write: true });
+const inputFile = await Deno.open("data.txt", { read: true });
+const outputFile = await Deno.open("written_data.txt", { write: true });
 
 const readableStream = inputFile.readable;
 
@@ -24,9 +24,7 @@ const letterTransform = (word) => {
 
 const caseTransform = new TransformStream({
   transform(chunk, controller) {
-    const chunkData = chunk.split("\n").map(letterTransform).join("\n");
-
-    controller.enqueue(chunkData);
+    controller.enqueue(letterTransform(chunk));
   },
 });
 
